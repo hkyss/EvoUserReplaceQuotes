@@ -10,8 +10,8 @@ if ($e->name == 'OnWUsrFormSave') {
   while($row = $modx->db->getRow($result)) {
     if(!empty($row)) {
       foreach($row as $item_key => $item) {
-        $item = str_replace('\'','"',$item);
-        $item = str_replace('"', '»', preg_replace('/((^|\s)"(\w))/um', '\2«\3', $item));
+        $item = str_replace('\'','"',$item); // замена одинарных кавычек на двойные
+        $item = str_replace('"', '»', preg_replace('/((^|\s)"(\w))/um', '\2«\3', $item)); // замена двойных кавычек на «ёлочки»
         $modUsers->set($item_key,$item);
       }
     }
